@@ -1,0 +1,56 @@
+超过1万报错
+POST users/_search
+{
+  "from": 10000,
+  "size": 1,
+  "query": {
+    "match_all": {}
+  }
+}
+
+DELETE users
+
+POST users/_doc
+{
+  "name":"u1",
+  "age":10
+}
+
+POST users/_doc
+{
+  "name":"u2",
+  "age":12
+}
+
+POST users/_doc
+{
+  "name":"u3",
+  "age":13
+}
+
+POST users/_doc
+{
+  "name":"u4",
+  "age":14
+}
+
+GET users/_count
+
+POST users/_search
+{
+  "size":1,
+  "query": {
+    "match_all":{}
+  },
+  "sort":[{"age":"desc"},{"_id":"asc"}]
+}
+
+POST users/_search
+{
+  "size":1,
+  "query":{
+    "match_all":{}
+  },
+  "search_after":[12,"xA7jiXIBKPk1gSnEM-E8"],
+  "sort":[{"age":"desc"},{"_id":"asc"}]
+}
