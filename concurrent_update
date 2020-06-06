@@ -1,0 +1,13 @@
+乐观锁
+
+POST product/_doc/2
+{
+  "title":"iphone",
+  "count":100
+}
+
+PUT product/_doc/2?if_seq_no=2&if_primary_term=1
+{
+  "title":"iphone",
+  "count":99
+}
