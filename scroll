@@ -1,0 +1,44 @@
+ 
+DELETE users
+
+POST users/_doc
+{
+  "name":"u1",
+  "age":10
+}
+
+POST users/_doc
+{
+  "name":"u2",
+  "age":12
+}
+
+POST users/_doc
+{
+  "name":"u3",
+  "age":13
+}
+
+POST users/_doc
+{
+  "name":"u4",
+  "age":14
+}
+
+GET users/_count
+
+POST /users/_search?scroll=5m
+{
+  "size": 2, 
+  "query":{
+    "match_all":{}
+  }
+}
+
+POST _search/scroll
+{
+  "scroll":"1m",
+  "scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAD8gWTnQxSmU3UDJReHl6RE5kVlFqN29pUQ=="
+}
+
+
