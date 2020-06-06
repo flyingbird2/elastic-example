@@ -1,0 +1,35 @@
+DELETE message
+
+PUT message
+{
+  "settings": {
+    "number_of_shards": 20
+  }
+}
+
+POST message/_doc?routing=2
+{
+  "cotent":"good"
+}
+
+POST message/_doc?routing=1
+{
+  "cotent":"good evening"
+}
+
+POST message/_doc?routing=3
+{
+  "cotent":"good evening everyone"
+}
+
+POST message/_search?search_type=dfs_query_then_fetch
+{
+  
+  "query":{
+    "term":{
+      "cotent": {
+        "value": "good"
+      }
+    }
+  }
+}
